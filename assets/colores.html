@@ -1,0 +1,137 @@
+<html>
+
+<head>
+    <title>Paleta de colores</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        .box {
+            height: 96px;
+            width: 100px;
+            float: left;
+            margin-right: 25px;
+            border: solid 2px #000;
+
+        }
+
+        .row {
+            display: block;
+            height: 100px;
+            width: 685px;
+            margin: auto;
+            margin-bottom: 10px;
+
+        }
+
+        .number {
+            width: 30px;
+            float: left;
+            font-size: 20pt;
+            margin: auto;
+            font-weight: bold;
+            padding-top: 40px;
+            background: #000;
+            height: 60px;
+            color: white;
+            text-align: center;
+            border-radius: 7px 0px 0px 7px
+        }
+
+        input {
+            border: none;
+            text-transform: uppercase;
+            font-size: 30pt;
+            align-content: center;
+            float: left;
+            height: 100px;
+            width: 200px;
+
+        }
+
+        .flutter-color {
+            font-size: 16pt;
+            text-transform: capitalize;
+            margin-left: 25px;
+            border-right: solid 5px #000;
+            padding-right: 10px;
+            width: 230px;
+        }
+
+        h1 {
+
+            color: white;
+            margin: auto;
+        }
+
+        .link {
+            height: auto;
+            color: white;
+            background: #0071cf;
+            width: 200px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 7px;
+            position: relative;
+            border: solid 1px #0061ec;
+        }
+
+        .link:hover {
+            background: #0091cf;
+
+            border-radius: 21px;
+        }
+
+        .paleta {
+            width: 100%;
+            background: #333;
+            text-align: center;
+            height: auto;
+            padding: 10px;
+
+        }
+
+        a {
+            color: white;
+            position: relative;
+            margin: auto;
+            text-decoration: none;
+            font-size: 20pt;
+
+        }
+
+        .copy {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row paleta">
+        <h1>Paleta de colores</h1>
+    </div>
+
+    <div id="colores"></div>
+    <div class="row link" title="Enlace para descargar el mockup">
+        <a href="https://www.uplabs.com/posts/free-recipe-app-sketch" target="_blank">Enlace al diseño</a></div>
+    <div class="copy">
+        © Copyright G Coding Academy 2019
+    </div>
+</body>
+<script>
+    var div = document.getElementById("colores");
+    var colores = ["#FF114E", "#FF6D1B", "#3023AE", "#C86DD7", "#3023AE", "#10A97E", "#F9F9F9", "#E7ECEE", "#F6F2E6",
+        "#101621", "#222B3B", "#FFEB00", "#1E5CFC", "#FFEB00", "#B51930", "#E2203D", "#FF4432", "#101621", "#ABABAB"
+    ];
+
+    for (var i in colores) {
+        var color = colores[i];
+        div.innerHTML += `<div class="row">
+                            <div class="number" >${parseInt(i)+1}</div>
+                            <div class="box" style='background:${color}'></div>
+                            <div><input type="text" value="${color}" style="color:${color}; border-bottom: solid 2px ${color}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></div>
+                            <div><input type="text" class='flutter-color' value="Color(0xFF${color.replace('#','').toUpperCase()})" style="color:${color}; border-bottom: solid 2px ${color}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></div>
+                        </div>`;
+    }
+</script>
+
+</html>

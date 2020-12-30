@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Test de canvas</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            background: rgb(19, 18, 41);
+            color: white;
+        }
+
+        #canvas {
+            height: 400px;
+            width: 100px;
+            background: #000;
+            float: left;
+            margin-right: 50px;
+
+        }
+
+
+        #div-console {
+            height: 400px;
+
+
+        }
+
+        table tr th {
+            height: 20px;
+
+        }
+
+        table,
+        table tr td,
+        table tr th {
+            border-collapse: collapse;
+            border: solid 1px #fff;
+            padding: 5px;
+            text-align: center;
+            color: white;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <h4>En está página se simula lo que hace el custom paint en la app que hemos revisado</h4>
+    <p>Se dibujará en en una altura de 100px, en cada iteración, se mostrará desde que posición (x, y) se comenzó a
+        dibujar
+        y el punto donde finalizó, ademas el espacio que aún se tiene disponible.
+        <br>
+        <b> Nota:</b> en la tabla se muestra una posición x = 0, pero en la practica se uso una posición de 50, se hizo
+        así para
+        poder mostrar las líneas, sino, no fueran visibles.
+    </p>
+    <canvas id="canvas" width="100px" height="400px">
+
+    </canvas>
+    <div id="div-console">
+        <table id="console">
+            <tr>
+                <th>Nº</th>
+                <th>(X, Y) Inicial</th>
+                <th>(X, Y) Final</th>
+                <th>Espacio Vertical disponible</th>
+            </tr>
+    </div>
+    </div>
+
+</body>
+<script>
+    const consoleDiv = document.getElementById("console");
+    var canvas = document.getElementById("canvas");
+    var count = 0;
+    if (canvas && canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+        const dashWidth = 3;
+        const dashSpace = 3;
+        var startY = 0;
+        var max = 100;
+        if (ctx) {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#fff";
+
+            const intervalID = setInterval(() => {
+                if (max >= 0) {
+                    ctx.beginPath();
+                    ctx.moveTo(50, startY);
+                    ctx.lineTo(50, startY + dashWidth);
+                    ctx.stroke();
+
+
+                    const space = dashSpace + dashWidth;
+                    count++;
+                    log(startY, startY + dashWidth, max - space);
+                    startY += space;
+                    max -= space;
+                } else {
+                    clearInterval(intervalID);
+                }
+            }, 1000);
+
+        }
+    }
+
+    function log(y, yEnd, max) {
+
+        consoleDiv.innerHTML +=
+            `<tr><td>${count}</td><td>(0,&nbsp;&nbsp;&nbsp;${y})</td><td>(0,&nbsp;&nbsp;&nbsp;${yEnd})</td><td>${max}</td></tr>`;
+
+    }
+</script>
+
+</html>

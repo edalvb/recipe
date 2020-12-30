@@ -1,0 +1,16 @@
+Hola, primero agradecerte por hacer posible que esta academia siga adelante, con la labor
+de formar profesionales en software y en este caso, de Flutter.
+
+Pasos:
+En este archivo comprimido encontraras todo el código fuente de la aplicación que hemos realizado,
+por cada vídeo encontraras el resultado final.
+
+Ademas encontraras un pdf con el caso de uso y 
+el link de descarga(del mockup en la página donde está publicado) en el mismo documento.
+
+Recuerda, ante cualquier duda, puedes hacer uso del apartado de discuciones y tambien si eres parte de los pioneros
+a travez del canal de Slack.
+
+
+Para mas contenido como este, puedes suscribirte a nuestra academia:
+https://www.gcoding.academy/

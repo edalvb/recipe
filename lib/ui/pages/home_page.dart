@@ -50,12 +50,36 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 45),
-                Row(
-                  children: [
-                    FoodTimeWidget(colors: [Color(0xFFFF114E), Color(0xFFFF6D1B)]),
-                    FoodTimeWidget(colors: [Color(0xFF3023AE), Color(0xFFC86DD7)]),
-                    FoodTimeWidget(colors: [Color(0xFF10A97E), Color(0xFF10A97E)]),
-                  ],
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      FoodTimeWidget(
+                        colors: [Color(0xFFFF114E), Color(0xFFFF6D1B)],
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        name: "BREACKFAST",
+                        count: 245,
+                        assetPath: "assets/images/sandwich.png",
+                      ),
+                      FoodTimeWidget(
+                        colors: [Color(0xFF3023AE), Color(0xFFC86DD7)],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        name: "LUNCH",
+                        count: 358,
+                        assetPath: "assets/images/ramen.png",
+                      ),
+                      FoodTimeWidget(
+                        colors: [Color(0xFF3023AE), Color(0xFF10A97E)],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomRight,
+                        name: "DINNER",
+                        count: 358,
+                        assetPath: "assets/images/ramen.png",
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -68,19 +92,47 @@ class HomePage extends StatelessWidget {
 
 class FoodTimeWidget extends StatelessWidget {
   List<Color> colors;
+  String name;
+  int count;
+  String assetPath;
+  AlignmentGeometry begin;
+  AlignmentGeometry end;
 
-  FoodTimeWidget({this.colors});
+  FoodTimeWidget(
+      {this.colors,
+      this.name,
+      this.count,
+      this.assetPath,
+      this.begin,
+      this.end});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 300,
       width: 175,
+      margin: EdgeInsets.only(right: 20),
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: colors),
+        gradient:
+            LinearGradient(colors: colors, begin: this.begin, end: this.end),
         borderRadius: BorderRadius.all(
           Radius.circular(30),
         ),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(this.assetPath),
+          Text(
+            this.name,
+            style: TextStyle(letterSpacing: 1.5, fontSize: 16),
+          ),
+          Text(
+            "$count+",
+            style: TextStyle(fontSize: 40),
+          ),
+          Text("DIFETENTS\nRECIPES"),
+        ],
       ),
     );
   }

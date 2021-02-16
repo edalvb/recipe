@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'package:recipe/ui/components/circle_widget.dart';
+import 'package:recipe/ui/components/food_time.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -66,6 +69,7 @@ class HomePage extends StatelessWidget {
                         count: 245,
                         assetPath: "assets/images/sandwich.png",
                         yoffset: -15.0,
+                        onTap: ()=> showBreackFastPage(context),
                       ),
                       FoodTimeWidget(
                         colors: [Color(0xFF3023AE), Color(0xFFC86DD7)],
@@ -165,106 +169,8 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-}
 
-class FoodTimeWidget extends StatelessWidget {
-  List<Color> colors;
-  String name;
-  int count;
-  String assetPath;
-  AlignmentGeometry begin;
-  AlignmentGeometry end;
-  Offset offset;
-
-  FoodTimeWidget(
-      {this.colors,
-      this.name,
-      this.count,
-      this.assetPath,
-      this.begin,
-      this.end,
-      double yoffset}) {
-    this.offset = Offset(0, yoffset);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 300,
-      width: 175,
-      margin: EdgeInsets.only(right: 20),
-      padding: EdgeInsets.only(top: 45),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          gradient:
-              LinearGradient(colors: colors, begin: this.begin, end: this.end),
-          borderRadius: BorderRadius.all(
-            Radius.circular(30),
-          ),
-        ),
-        child: Stack(
-          children: [
-            Transform.translate(
-              //offset: Offset(0, -25),
-              offset: this.offset,
-              child: Align(
-                  alignment: Alignment.topCenter,
-                  child: Image.asset(this.assetPath)),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    this.name,
-                    style: TextStyle(
-                        letterSpacing: 1.5,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "$count+",
-                    style: TextStyle(fontSize: 40),
-                  ),
-                  Text(
-                    "DIFETENTS\nRECIPES",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 10, letterSpacing: 1.5),
-                  ),
-                  SizedBox(
-                    height: 40,
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CircleWidget extends StatelessWidget {
-  final Color circleColor;
-  final List<Widget> children;
-
-  CircleWidget({this.circleColor, this.children});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 80,
-      width: 80,
-      padding: EdgeInsets.only(top: 10, left: 5),
-      decoration: BoxDecoration(shape: BoxShape.circle, color: circleColor),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: children,
-      ),
-    );
+  showBreackFastPage(BuildContext context) {
+    Navigator.pushNamed(context, "/breackfast_page");
   }
 }

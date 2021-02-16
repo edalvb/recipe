@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe/ui/components/border_button.dart';
 
 class BreackfastPage extends StatelessWidget {
   @override
@@ -59,6 +60,33 @@ class BreackfastPage extends StatelessWidget {
                 onTap: () {},
               )
             ],
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.only(top: 90, left: 16, right: 16, bottom: 55),
+            child: ListView(
+              children: [
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.only(left: 7),
+                  child: Text("MY FAVORITES"),
+                ),
+                SizedBox(height: 10),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FavoriteWidget( text: "FRENCH TOAST", assetPath: "assets/images/favorites/favorite1.png"),
+                      FavoriteWidget( text: "OATMEJAL", assetPath: "assets/images/favorites/Bitmap-9.png"),
+                      FavoriteWidget( text: "FRENCH TOAST", assetPath: "assets/images/favorites/Bitmap-4.png"),
+                      FavoriteWidget( text: "FRENCH TOAST", assetPath: "assets/images/favorites/Bitmap-3.png"),
+                      FavoriteWidget( text: "FRENCH TOAST", assetPath: "assets/images/favorites/favorite1.png"),
+                    ],
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),
@@ -66,29 +94,30 @@ class BreackfastPage extends StatelessWidget {
   }
 }
 
-class BorderButton extends StatelessWidget {
+class FavoriteWidget extends StatelessWidget {
+  String assetPath;
   String text;
-  VoidCallback onTap;
 
-  BorderButton({this.text, this.onTap});
+  FavoriteWidget({this.assetPath, this.text});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(
-        top: 15,
-        bottom: 15,
-        right: 10,
-      ),
-      child: OutlineButton(
-        onPressed: onTap,
-        textColor: Colors.white,
-        borderSide: BorderSide(color: Colors.white, width: 1),
-        highlightedBorderColor: Colors.black,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-        child: Text(
-          this.text.toUpperCase(),
-          style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.5),
+    return InkWell(
+      child: SizedBox(
+        width: 110,
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(assetPath, height: 120),
+            ),
+            SizedBox(height: 5),
+            Text(
+              text,
+              textAlign: TextAlign.center,
+              style: TextStyle(letterSpacing: 1.5, fontWeight: FontWeight.bold),
+            )
+          ],
         ),
       ),
     );

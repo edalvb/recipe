@@ -87,7 +87,7 @@ class _BreackfastPageState extends State<BreackfastPage> {
                         text: "FRENCH TOAST",
                         assetPath: "assets/images/favorites/favorite1.png",
                         onTap: () {
-                          print("hola");
+                          _showDishDetails(context);
                         },
                       ),
                       FavoriteWidget(
@@ -173,6 +173,10 @@ class _BreackfastPageState extends State<BreackfastPage> {
 
   _requestSearch(String word) {
     print(word);
+  }
+
+  void _showDishDetails(BuildContext context) {
+    Navigator.pushNamed(context, "/dish_details_page");
   }
 }
 

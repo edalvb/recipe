@@ -18,7 +18,7 @@ class DishDetailsPage extends StatelessWidget {
                     end: Alignment.bottomLeft)),
           ),
           Positioned(
-              top: 250,
+              bottom: 100,
               child: Container(
                 height: 250,
                 width: 225,
@@ -28,6 +28,7 @@ class DishDetailsPage extends StatelessWidget {
                         BorderRadius.only(bottomRight: Radius.circular(60))),
               )),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset("assets/images/Recipe-01.png"),
               Transform.translate(
@@ -60,12 +61,64 @@ class DishDetailsPage extends StatelessWidget {
                         child: Text("READ MORE"),
                         onPressed: () {},
                       ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: SizedBox(
+                  width: 200,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text("FRENCH TOAST",
+                          style: TextStyle(letterSpacing: 2, fontSize: 25)),
+                      Text(
+                        "In a small bowl, combine, cinnamon, nutmeg and sugar and set aside briedfly",
+                        style: TextStyle(fontWeight: FontWeight.w300),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 50),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Image.asset("assets/images/fire.png"),
+                        SizedBox(width: 10),
+                        Text("65%"),
+                      ],
+                    ),
+                    Container(
+                      height: 40,
+                      width: 1,
+                      color: Color(0xFFD8D8D8),
+                    ),
+                    Text("Vegetarian"),
+                    Container(
+                      height: 40,
+                      width: 1,
+                      color: Color(0xFFD8D8D8),
+                    ),
+                    Row(
+                      children: [
+                        Image.asset("assets/images/time.png", height: 25,),
+                        SizedBox(width: 10),
+                        Text("10 min"),
+                      ],
                     )
                   ],
                 ),
               )
             ],
           ),
+          AppBar()
         ],
       ),
     );

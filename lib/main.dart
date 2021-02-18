@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe/ui/pages/breackfast_page.dart';
 import 'package:recipe/ui/pages/dish_details.dart';
+import 'package:recipe/ui/pages/dish_details_more_page.dart';
 import 'package:recipe/ui/pages/home_page.dart';
 
 void main() => runApp(MyApp());
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => HomePage(),
         "/breackfast_page": (context) => BreackfastPage(),
         "/dish_details_page": (context) => DishDetailsPage(),
+        "/dish_details_more_page": (context) => DishDetailsMorePage(),
       },
     );
   }
